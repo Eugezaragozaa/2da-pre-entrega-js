@@ -44,8 +44,8 @@ let menu = {
 
     function calcularTotal() {
     total = 0;
-    for (let i = 0; i < orden.length; i++) {
-        total += orden[i].precio;
+    for (let i = 0; i < order.length; i++) {
+        total += order[i].precio;
     }
     console.log(`Total a pagar: $${total}`);
     }
