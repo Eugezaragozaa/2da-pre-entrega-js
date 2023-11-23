@@ -1,101 +1,95 @@
 
 let menu = {
-    hamburguers: {
-    cheddar: 5,
-    cheddarBaccon : 7,
-    cheddarBacconOnionEgg: 6 ,
-    veggiePortobellosOnions: 8 
-    },
+    hamburgers: [
+    { name: "Cheddar Burger", precioSolo: 2000, precioCombo: 3000 },
+    { name: "Cheddar Baccon Burger", precioSolo: 2500, precioCombo: 3500 },
+    { name: "Cheddar Baccon Onion Egg Burger", precioSolo: 2800, precioCombo: 3200 },
+    { name: "Veggie Portobellos Onions Burger", precioSolo: 2800, precioCombo: 3200 },
+    ],
 
-    pizzas: {
-    muzzarella: 8,
-    fugazzeta: 9,
-    bbq: 7,
-    chikenfried: 5
-    },
+    pizzas: [
+    { name: "Muzzarella Pizza", precioSolo: 2000, precioCombo: 3000 },
+    { name: "Fugazzeta Pizza", precioSolo: 3000, precioCombo: 3800 },
+    { name: "bbq Pizza", precioSolo: 3700, precioCombo: 4200 },
+    { name: "Chiken Fried Pizza", precioSolo: 4000, precioCombo: 4500 },
+    ],
 
-    salads: {
-    cesar: 4,
-    mediterranea: 5,
-    eggCarrotTomato: 3 
-    },
+    salads: [
+    { name: "Cesar Salad", precioSolo: 2800, precioCombo: 3600 },
+    { name: "Mediterrranea Salad", precioSolo: 2600, precioCombo: 3300 },
+    { name: "Mixed Salad", precioSolo: 2000, precioCombo: 2800 },
+    ],
 
-    drinks: {
-    cocacola: 2,
-    lemonMintGinger: 3,
-    lemonMintAppleCedron: 6,
-    water: 4,
-    
-    }
+    drinks: [
+    {name: "Coca-Cola", precioSolo: 2000},
+    {name: "Limonated Zen", precioSolo: 2000},
+    {name: "Mistic Lemonated", precioSolo: 2000},
+    {name: "Water", precioSolo: 1800},
+    ],
 };
 
     let order = [];
     let total = 0;
 
 
-    function agregarAlCarrito(categoria, plato) {
-    if (categoria in menu && plato in menu [categoria]) {
-        orden.push({ categoria, plato, precio: menu[categoria][plato] });
-        console.log(`${plato} de ${categoria} agregado al carrito. Precio: $${menu[categoria][plato]}`);
-    } else {
-        alert("Plato no válido. Por favor, elija un plato del menú.");
-        }
-    }
-
-    function calcularTotal() {
-    total = 0;
-    for (let i = 0; i < order.length; i++) {
-        total += order[i].precio;
-    }
-    console.log(`Total a pagar: $${total}`);
-    }
-
-
-
-/*FALTA ARREGLAR : CONFUSED !! SEND ME HELP
-
-
-    function mostrarHamburguers(categoria, hamburguers) {
-        console.log(`Menú de ${categoria}:`);
-        for (let hamburguer of hamburguers) {
-            if (menu[hamburguers][opcion]) {
-            console.log(`${opcion}: $${menu[categoria][opcion]}`);
-            } else {
-            console.log(`${opcion} no encontrada en el menú de ${categoria}`);
-        }
-    }
+    function showProductsToCart() {
+    console.log("ver carrito:");
+    carrito.forEach(item => {
+        const { category, hamburguer, drinks, precioTotal } = item;
+        console.log(`${category}: ${hamburguer.name} + ${drinks.name} - Precio Total: $${precioTotal}`);
+    });
 }
-    function seleccionarOpciones() {
-        mostrarHamburguers("hamburgers", ["cheddar, bacon, onion, egg"]);
-        mostrarDrinks("drinks", ["lemon, mint, ginger"]);
-    }
+function addComboToCart(hamburgers, drinks) {
+    if (menu.hamburgers[hamburgers] && menu.drinks[drinks]) {
+        const { nombre: cheddarBacconBurger, precioSolo: precioBurgerSolo, precioCombo: precioBurgerCombo } = menu.hamburgers[hamburger];
+        const { nombre: misticLemonade, precioSolo: precioBebidaSolo } = menu.drinks[dink];
 
-*/
+        const combo = {
+            categoria: "combo",
+            hamburguesa: { nombre: cheddarBacconBurger, precioSolo: precioBurgerSolo, precioCombo: precioBurgerCombo },
+            bebida: { nombre: misticLemonade, precioSolo: precioBebidaSolo},
+            precioTotal: precioBurgerCombo + precioBebidaSolo
+        };
 
 
-    function simular() {
-    let continuar = true;
-    while (continuar) {
-        let categoria = prompt("Menú: hamburguesas, pizzas, ensaladas, refrescos\nIngrese la categoría o escriba 'fin' para finalizar:");
-    
-        if (categoria.toLowerCase() === 'fin') {
-        continuar = false;
+
+
+        cart.push(combo);
+
+        console.log(`Se ha agregado el combo ${cheddarBacconBurger} + ${misticLemonade} al carrito.`);
     } else {
-        let plato = prompt(`Menú de ${categoria}: ${Object.keys(menu[categoria]).join(", ")}\nIngrese el platillo que desea:`);
-        agregarAlCarrito(categoria, plato);
-        }
+        console.log(`Hamburguesa o bebida no encontrada en el menú.`);
     }
-
-    calcularTotal();
 }
 
 
-    simular();
+
+function calculateTotalCart() {
+    let total = 0;
+
+    cart.forEach(item => {
+        total += item.precioTotal;
+    });
+
+    return total;
+}
+
+// asi se veria la card que muestra la informacion que contiene el carrito para hacer la suma de los productos elegidos 
+
+showProducts("hamburgers");
+
+showProductos("drinks");
+
+addComboToCart("cheddar", "lemonMintGinger");
+
+showProductsToCart();
+
+// aca mostramos el total de lo que se encuentra en el carrito 
+const totalCart = calculateTotalCart();
+console.log("Total del carrito: $" + totalCart);
 
 
-
-
-
+Simular ();
 
 
 
