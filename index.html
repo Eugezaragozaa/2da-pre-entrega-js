@@ -3,11 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Orden de Comida</title>
+    <title>Tienda de Ropa</title>
+
+    <!-- Incluyendo SweetAlert2 por CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.6/dist/sweetalert2.min.css">
 </head>
 <body>
 
-    <script src="main.js"></script>
+    <h1>Welcome to HotCue</h1>
 
+    <div>
+        <h2>Productos Disponibles</h2>
+        <label for="category-select">Categoría:</label>
+        <select id="category-select">
+            <option value="shirts">Camisetas</option>
+            <option value="pants">Pantalones</option>
+            <option value="accesory">accesorios</option>
+            <option value="Jackets">Camisas y chaquetas</option>
+        </select>
+
+    <label for="category-select">Categoría:</label>
+        <select id="category-select">
+            <option value="shirts">Camisetas</option>
+            <option value="jackets">Chaquetas</option>
+        </select>
+
+        <button id="add-to-cart-button">Agregar al Carrito</button>
+    </div>
+
+    <div id="product-container"></div>
+
+    <div id="cart-container">
+        <h2>Carrito de Compras</h2>
+    </div>
+
+    <!-- Incluyendo SweetAlert2 por CDN no estaba segura si dentro del body o dentro del head -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.6/dist/sweetalert2.all.min.js"></script>
+
+    <script src="main.js"></script>
 </body>
 </html>
